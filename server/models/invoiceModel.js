@@ -5,9 +5,9 @@ const Schema = mongoose.Schema
 const invoiceSchema = new Schema({
   id: {
     type: String,
-    // required: true
+    required: true
   },
-  partner: {
+  partner_id: {
     type: String,
     required: true
   },
@@ -19,10 +19,10 @@ const invoiceSchema = new Schema({
     type: Date,
     required: true
   },
-  status: {
+  paid: {
     type: Boolean,
     required: true
   }
 }, { timestamps: true })
 
-module.exports = mongoose.model('invoiceModel', invoiceSchema)
+module.exports = mongoose.model('Invoice', invoiceSchema)

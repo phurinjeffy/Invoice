@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 // GET all invoices
 const getInvoices = async (req, res) => {
-  const invoices = await Invoice.find({}).sort({ createdAt: -1 })
+  const invoices = await Invoice.find({}).sort({createdAt: -1})
 
   res.status(200).json(invoices)
 }
@@ -27,10 +27,10 @@ const getInvoice = async (req, res) => {
 
 // CREATE a new invoice
 const createInvoice = async (req, res) => {
-  const { partner, date, due, status } = req.body
+  const { id, partner_id, date, due, paid } = req.body
 
   try {
-    const invoice = await Invoice.create({ partner, date, due, status })
+    const invoice = await Invoice.create({ id, partner_id, date, due, paid })
     res.status(200).json(invoice)
   } catch (error) {
     res.status(400).json({ error: error.message })
