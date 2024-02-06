@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import InvoiceDetails from "../components/InvoiceDetails";
+import InvoiceForm from "../components/InvoiceForm";
 
 const Invoice = () => {
   const [invoices, setInvoices] = useState(null);
@@ -35,13 +36,14 @@ const Invoice = () => {
           <InvoiceDetails
             key={invoice._id}
             id={invoice._id}
-            partnerid={invoice.partnerid}
-            partner={invoice.partner}
+            partner_id={invoice.partner_id}
             date={invoice.date}
             due={invoice.due}
             paid={invoice.paid}
           />
         ))}
+
+      <InvoiceForm />
     </div>
   );
 };
