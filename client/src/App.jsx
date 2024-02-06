@@ -1,24 +1,23 @@
-import './App.css'
-import Navbar from './components/Navbar'
-import { BrowserRouter, Route, Routes} from "react-router-dom";
-import Home from './pages/Home';
-import Invoice from './pages/Invoice';
-import Partner from './pages/Partner';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./Layout";
+import Home from "./pages/Home";
+import Invoice from "./pages/Invoice";
+import Partner from "./pages/Partner";
 
 function App() {
   return (
-    <div className='w-full h-full'>
-      <Navbar />
-
-      <BrowserRouter>
+    <div className="w-full h-full">
+      <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/invoice" element={<Invoice />} />
-          <Route path="/partner" element={<Partner />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="invoices" element={<Invoice />} />
+            <Route path="partners" element={<Partner />} />
+          </Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
