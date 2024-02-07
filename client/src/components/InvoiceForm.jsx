@@ -6,7 +6,7 @@ const InvoiceForm = () => {
   const [date, setDate] = useState("");
   const [due, setDue] = useState("");
   const [paid, setPaid] = useState("");
-  const [error, setError] = useState("null");
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,42 +37,56 @@ const InvoiceForm = () => {
   };
 
   return (
-    <form className="create" onSubmit={handleSubmit}>
-      <h3>Add a New Invoice</h3>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+      <div className="font-semibold text-base">Invoice details</div>
 
-      <label>id: </label>
+      <label>ID</label>
       <input
         type="text"
         onChange={(e) => setId(e.target.value)}
         value={id}
+        className="border border-black border-opacity-50 rounded-xl py-2 px-4"
       />
 
-      <label>partner_id: </label>
+      <label>Partner ID</label>
       <input
         type="text"
         onChange={(e) => setPartner_id(e.target.value)}
         value={partner_id}
+        className="border border-black border-opacity-50 rounded-xl py-2 px-4"
       />
 
-      <label>date: </label>
+      <label>Date</label>
       <input
         type="date"
         onChange={(e) => setDate(e.target.value)}
         value={date}
+        className="border border-black border-opacity-50 rounded-xl py-2 px-4"
       />
 
-      <label>due: </label>
-      <input type="date" onChange={(e) => setDue(e.target.value)} value={due} />
-
-      <label>paid: </label>
+      <label>Due Date</label>
       <input
-        type="text"
+        type="date"
+        onChange={(e) => setDue(e.target.value)}
+        value={due}
+        className="border border-black border-opacity-50 rounded-xl py-2 px-4"
+      />
+
+      <label>Status</label>
+      <select
         onChange={(e) => setPaid(e.target.value)}
         value={paid}
-      />
+        className="border border-black border-opacity-50 rounded-xl py-2 px-4"
+      >
+        <option value={true}>Paid</option>
+        <option value={false}>Not Paid</option>
+      </select>
 
-      <button>Add Invoice</button>
-      {error && <div>{error}</div>}
+      <button className="flex items-center justify-center p-3 bg-orange-400 rounded-xl text-white text-sm my-6">
+        Add Invoice
+      </button>
+
+      {error && <div className="text-red-600 text-sm">{error}</div>}
     </form>
   );
 };

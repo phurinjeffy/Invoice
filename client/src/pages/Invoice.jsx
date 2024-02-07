@@ -21,6 +21,10 @@ const Invoice = () => {
 
   return (
     <div className="m-6">
+      <div className="text-xl font-semibold">
+        Invoices List
+      </div>
+
       <div className="flex flex-row my-6">
         <Link
           to="../new-invoice"
