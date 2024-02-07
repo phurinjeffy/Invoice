@@ -16,13 +16,13 @@ const Navbar = () => {
     {
       id: 2,
       name: "Invoice",
-      path: "invoices",
+      path: "/invoices",
       icon: <StorageIcon />,
     },
     {
       id: 3,
       name: "Partner",
-      path: "partners",
+      path: "/partners",
       icon: <ContactPageIcon />,
     },
   ];
@@ -36,11 +36,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full rounded-[20px] shadow-3xl px-8 py-4 mt-5">
+    <nav className="w-full px-8 py-4 mt-5">
       <div className="flex items-center justify-between">
         <div className="text-3xl font-bold">
           <Link to="/">
-            Invoices <span className="text-coral-red">app</span>
+            Invoice <span className="text-red-400">App</span>
           </Link>
         </div>
 
@@ -53,7 +53,9 @@ const Navbar = () => {
             <li key={id}>
               <Link
                 to={path}
-                className={`leading-normal font-semibold hover:text-red-500 flex align-middle gap-2`}
+                className={`font-semibold hover:text-red-400 flex align-middle gap-2 ${
+                  location.pathname === path ? 'text-red-400' : ''
+                }`}
               >
                 {icon}
                 {name}
@@ -64,12 +66,12 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden m-2">
+        <div className="md:hidden mt-8 flex justify-center items-center gap-6">
           {links.map(({ id, name, path }) => (
             <Link
               key={id}
               to={path}
-              className="block py-2 px-4 hover:text-red-500 hover:rounded-xl"
+              className="font-semibold hover:text-red-400"
             >
               {name}
             </Link>

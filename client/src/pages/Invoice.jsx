@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import InvoiceDetails from "../components/InvoiceDetails";
-import InvoiceForm from "../components/InvoiceForm";
+import { Link } from "react-router-dom";
 
 const Invoice = () => {
   const [invoices, setInvoices] = useState(null);
@@ -21,6 +21,15 @@ const Invoice = () => {
 
   return (
     <div className="m-6">
+      <div className="flex flex-row my-6">
+        <Link
+          to="../new-invoice"
+          className="flex items-center justify-center p-3 bg-orange-400 rounded-xl text-white text-sm hover:scale-105 duration-500"
+        >
+          Add Invoice
+        </Link>
+      </div>
+
       <div className="flex gap-9 bg-slate-600 py-3 rounded-tl-lg rounded-tr-lg">
         <div className="font-semibold w-[200px] flex-1 pl-4 text-white">
           Partner
@@ -42,8 +51,6 @@ const Invoice = () => {
             paid={invoice.paid}
           />
         ))}
-
-      <InvoiceForm />
     </div>
   );
 };
