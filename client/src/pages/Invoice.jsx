@@ -1,10 +1,11 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import InvoiceDetails from "../components/InvoiceDetails";
 import { Link } from "react-router-dom";
+import { useInvoiceContext } from "../hooks/useInvoiceContext";
 
 const Invoice = () => {
-  const [invoices, setInvoices] = useState(null);
+  const { invoices, dispatch } = useInvoiceContext();
 
   useEffect(() => {
     const fetchInvoices = async () => {
@@ -12,7 +13,7 @@ const Invoice = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setInvoices(json);
+        dispatch({type: 'SET_INVOICE', payload: json})
       }
     };
 

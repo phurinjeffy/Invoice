@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useInvoiceContext } from "../hooks/useInvoiceContext";
 
 const InvoiceForm = () => {
+  const { dispatch } = useInvoiceContext();
+
   const [id, setId] = useState("");
   const [partner_id, setPartner_id] = useState("");
   const [date, setDate] = useState("");
@@ -33,6 +36,7 @@ const InvoiceForm = () => {
       setPaid("");
       setError(null);
       console.log("new invoice added");
+      dispatch({ type: "CREATE_INVOICE", payload: json });
     }
   };
 
