@@ -8,7 +8,7 @@ const InvoiceForm = () => {
   const [partner_id, setPartner_id] = useState("");
   const [date, setDate] = useState("");
   const [due, setDue] = useState("");
-  const [paid, setPaid] = useState("");
+  const [paid, setPaid] = useState(false);
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
